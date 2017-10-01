@@ -1,5 +1,5 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
+
 import '../../scss/note.scss';
 
 class Note extends React.Component {
@@ -8,7 +8,9 @@ class Note extends React.Component {
 
     this.state = {
       editing: false,
+      // notes: ['Note1', 'Note2', 'Note3', 'Note4'],
       newText: ''
+
     }
   }
 
