@@ -8,23 +8,51 @@ class Board extends React.Component {
     super();
 
       this.state = {
-        notes: []
+        notes: ['sdsada', 'sdasdasd']
       }
   }
 
-  addNote(text) {
-    let noteArr = this.state.notes;
-    noteArr.push(text);
-    this.setState({notes: noteArr});
-  }
+  // addNote(note) {
+  //   const noteArr = this.state.notes;
+  //   noteArr.push(note);
+  //   this.setState({notes: noteArr});
+  // }
+  //
+  // removeNote = () => {
+  //   noteArr.splice(i, 1);
+  //   this.setState(notes: noteArr);
+  //   console.log(this.state.notes);;
+  // }
+  //
+  // createArrNotes(text, index) {
+  //   return <Note
+  //           key = {index}
+  //           removeNoteBtn = {() => {
+  //             console.log('???');}}>
+  //          {text} </Note>
+  // }
 
   render() {
+    const noteArr = this.state.notes;
+
     return (
-      <div className='board'>
-        {this.state.notes.map((note, index) => {
-          return <Note key = {index}> {note} </Note>
-        })}
-        <button onClick = {this.addNote.bind(this)} >+</button>
+      <div>
+        <button onClick = {(note) => {
+            noteArr.push(note);
+            this.setState({notes: noteArr});
+            console.log(noteArr);
+          }
+        }> + Add Note </button>
+
+        <div className='board'>
+          {noteArr.map((text, i) => <Note key = {i}
+              removeNoteBtn = {() => {
+                console.log(i);
+                noteArr.splice(i, 1);
+                this.setState(noteArr);
+              }
+            }>{text}</Note>)}
+        </div>
       </div>
     );
   }

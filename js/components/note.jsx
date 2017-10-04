@@ -8,28 +8,30 @@ class Note extends React.Component {
 
     this.state = {
       editing: false,
-      // notes: ['Note1', 'Note2', 'Note3', 'Note4'],
       newText: ''
-
     }
   }
+
+
 
   // initialEditState(evt) {
   //   this.setState({editing: !this.state.editing})
   //   console.log(evt.target.value);
   // }
 
-  editText() {
-    this.setState({editing: true});
-  }
+  // editText() {
+  //   this.setState({editing: true});
+  // }
 
-  saveText() {
-    this.setState({editing: false});
-  }
+  // saveText() {
+  //   this.setState({editing: false});
+  // }
 
   noteText(evt) {
-    this.setState({newText: evt.target.value})
+    this.setState({newText: evt.target.value});
   }
+
+
 
 
   renderTextForm() {
@@ -38,19 +40,20 @@ class Note extends React.Component {
         <textarea
           value = {this.state.newText}
           onChange = {this.noteText.bind(this)}></textarea>
-        <button onClick = {this.saveText.bind(this)} >SAVE</button>
+        <button onClick = {() => this.setState({editing: false})} >SAVE</button>
       </div>
     );
   }
 
+
+
   renderNote() {
     return (
       <div className='note'>
-        <h1>{this.state.newText}</h1>
+        <div>{this.state.newText}</div>
           <button
-            value = {this.state.editing}
-            onClick = {this.editText.bind(this)}> EDIT </button>
-          <button> DELETE </button>
+            onClick = {() => this.setState({editing: true})}> EDIT </button>
+          <button onClick = {this.props.removeNoteBtn}> DELETE </button>
           <p></p>
       </div>
     );
