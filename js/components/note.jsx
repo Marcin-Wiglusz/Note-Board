@@ -19,16 +19,17 @@ class Note extends React.Component {
   //   console.log(evt.target.value);
   // }
 
-  // editText() {
-  //   this.setState({editing: true});
-  // }
+  editText() {
+    this.setState({editing: true});
+  }
 
-  // saveText() {
-  //   this.setState({editing: false});
-  // }
+  saveText() {
+    this.props.update(this.refs.refTextVal.value, this.props.index);
+    this.setState({editing: false});
+  }
 
-  noteText(evt) {
-    this.setState({newText: evt.target.value});
+  remove() {
+    this.props.remove(this.props.index)
   }
 
 
@@ -38,9 +39,10 @@ class Note extends React.Component {
     return (
       <div className='note'>
         <textarea
-          value = {this.state.newText}
-          onChange = {this.noteText.bind(this)}></textarea>
-        <button onClick = {() => this.setState({editing: false})} >SAVE</button>
+          ref = 'refTextVal'
+          defaultValue = {this.props.children}>
+        </textarea>
+        <button onClick = {this.saveText.bind(this)} >SAVE</button>
       </div>
     );
   }
@@ -50,11 +52,9 @@ class Note extends React.Component {
   renderNote() {
     return (
       <div className='note'>
-        <div>{this.state.newText}</div>
-          <button
-            onClick = {() => this.setState({editing: true})}> EDIT </button>
-          <button onClick = {this.props.removeNoteBtn}> DELETE </button>
-          <p></p>
+        <div>{this.props.children}</div>
+          <button onClick = {this.editText.bind(this)}> EDIT </button>
+          <button onClick = {this.props.remove}> DELETE </button>
       </div>
     );
   }
