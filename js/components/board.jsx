@@ -3,14 +3,15 @@ import React from 'react';
 import '../../scss/board.scss';
 import Note from './note.jsx';
 
-class Board extends React.Component {
+export default class Board extends React.Component {
   constructor() {
     super();
 
       this.state = {
-        notes: ['More react', 'Less bulshit', 'Damn']
+        notes: ['1Some meeting', '2Shoping list', '3Do some stuff']
       }
   }
+
 
   //receiving error without {}
   addNote({note}) {
@@ -32,6 +33,7 @@ class Board extends React.Component {
   }
 
   createArrNotes(text, i) {
+    //passing props
     return <Note
             index = {i}
             key = {i}
@@ -48,11 +50,10 @@ class Board extends React.Component {
         <button onClick = {this.addNote.bind(this)}> + Add Note </button>
 
         <div className='board'>
+          {/*maps through state creating 3 notes from it */}
           {this.state.notes.map(this.createArrNotes.bind(this))}
         </div>
       </div>
     );
   }
 }
-
-export default Board;

@@ -2,21 +2,35 @@ import React from 'react';
 
 import '../../scss/note.scss';
 
-class Note extends React.Component {
+export default class Note extends React.Component {
   constructor() {
     super();
 
     this.state = {
+      //responsible for normal & edit mode in note
       editing: false
     }
   }
 
+  //styling and displaying components before rendering
+  componentWillMount() {
+    this.style = {
+      right: this.randomDisplay(0, window.innerWidth - 300, 'px'),
+      top: this.randomDisplay(0, window.innerHeight - 300, 'px')
+    }
+  }
+
+  randomDisplay(x, window, px) {
+    //note distance from the edges
+    return (x + Math.ceil(Math.random() * (window - x)) + px)
+  }
 
   editText() {
     this.setState({editing: true});
   }
 
   saveText() {
+    //passing new text typed in note's textarea
     this.props.update(this.refs.refTextVal.value, this.props.index);
     this.setState({editing: false})
   }
@@ -29,7 +43,7 @@ class Note extends React.Component {
 
   renderTextForm() {
     return (
-      <div className='note'>
+      <div className='note' style = {this.style}>
         <textarea
           ref = 'refTextVal'
           defaultValue = {this.props.children}>
@@ -43,10 +57,10 @@ class Note extends React.Component {
 
   renderNote() {
     return (
-      <div className='note'>
+      <div className='note' style = {this.style}>
         <div>{this.props.children}</div>
           <button onClick = {() => this.editText()}> EDIT </button>
-          {/* arrow func allows me to delete exact note, no need to bind(this) */}
+          {/* arrow func allows me to delete exact note, no need for bind(this) */}
           <button onClick = {() => this.remove()}> DELETE </button>
       </div>
     );
@@ -60,5 +74,3 @@ class Note extends React.Component {
     : this.renderNote()
   }
 }
-
-export default Note;
