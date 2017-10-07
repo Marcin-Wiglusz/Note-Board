@@ -7,17 +7,10 @@ class Note extends React.Component {
     super();
 
     this.state = {
-      editing: false,
-      newText: ''
+      editing: false
     }
   }
 
-
-
-  // initialEditState(evt) {
-  //   this.setState({editing: !this.state.editing})
-  //   console.log(evt.target.value);
-  // }
 
   editText() {
     this.setState({editing: true});
@@ -25,14 +18,13 @@ class Note extends React.Component {
 
   saveText() {
     this.props.update(this.refs.refTextVal.value, this.props.index);
-    this.setState({editing: false});
+    this.setState({editing: false})
   }
 
   remove() {
     this.props.remove(this.props.index)
+
   }
-
-
 
 
   renderTextForm() {
@@ -42,7 +34,7 @@ class Note extends React.Component {
           ref = 'refTextVal'
           defaultValue = {this.props.children}>
         </textarea>
-        <button onClick = {this.saveText.bind(this)} >SAVE</button>
+        <button onClick = {() => this.saveText()} >SAVE</button>
       </div>
     );
   }
@@ -53,8 +45,9 @@ class Note extends React.Component {
     return (
       <div className='note'>
         <div>{this.props.children}</div>
-          <button onClick = {this.editText.bind(this)}> EDIT </button>
-          <button onClick = {this.props.remove}> DELETE </button>
+          <button onClick = {() => this.editText()}> EDIT </button>
+          {/* arrow func allows me to delete exact note, no need to bind(this) */}
+          <button onClick = {() => this.remove()}> DELETE </button>
       </div>
     );
   }

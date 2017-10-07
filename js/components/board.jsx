@@ -12,39 +12,40 @@ class Board extends React.Component {
       }
   }
 
-  // addNote(note) {
-  //   const noteArr = this.state.notes;
-  //   noteArr.push(note);
-  //   this.setState({notes: noteArr});
-  // }
+  //receiving error without {}
+  addNote({note}) {
+    let noteArr = this.state.notes;
+    noteArr.push(note);
+    this.setState({notes: noteArr});
+  }
 
-    removeNote(i) {
-      const noteArr = this.state.notes;
-      noteArr.splice(i, 1);
-      this.setState({notes: noteArr})
-    }
+  removeNote(i) {
+    let noteArr = this.state.notes;
+    noteArr.splice(i, 1);
+    this.setState({notes: noteArr})
+  }
 
-    updateText(newText, i) {
-      const noteArr = this.state.notes;
-      noteArr[i] = newText;
-      this.setState({notes: noteArr})
-    }
+  updateText(newText, i) {
+    let noteArr = this.state.notes;
+    noteArr[i] = newText;
+    this.setState({notes: noteArr})
+  }
 
-    createArrNotes(text, i) {
-      return <Note
-              index = {i}
-              key = {i}
-              remove = {this.removeNote.bind(this)}
-              update = {this.updateText.bind(this)}
-              > {text} </Note>
-    }
+  createArrNotes(text, i) {
+    return <Note
+            index = {i}
+            key = {i}
+            remove = {this.removeNote.bind(this)}
+            update = {this.updateText.bind(this)}
+            > {text} </Note>
+  }
 
 
   render() {
 
     return (
       <div>
-        <button> + Add Note </button>
+        <button onClick = {this.addNote.bind(this)}> + Add Note </button>
 
         <div className='board'>
           {this.state.notes.map(this.createArrNotes.bind(this))}
