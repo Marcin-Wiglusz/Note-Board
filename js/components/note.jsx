@@ -48,6 +48,7 @@ export default class Note extends React.Component {
           ref = 'refTextVal'
           defaultValue = {this.props.children}>
         </textarea>
+        {/* no need for bind(this) when using fat arrow */}
         <button onClick = {() => this.saveText()} >SAVE</button>
       </div>
     );
@@ -60,7 +61,6 @@ export default class Note extends React.Component {
       <div className='note' style = {this.style}>
         <div>{this.props.children}</div>
           <button onClick = {() => this.editText()}> EDIT </button>
-          {/* arrow func allows me to delete exact note, no need for bind(this) */}
           <button onClick = {() => this.remove()}> DELETE </button>
       </div>
     );

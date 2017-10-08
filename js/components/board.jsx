@@ -22,7 +22,8 @@ export default class Board extends React.Component {
 
   removeNote(i) {
     let noteArr = this.state.notes;
-    noteArr.splice(i, 1);
+    //delete doesn't change note's index
+    delete noteArr[i];
     this.setState({notes: noteArr})
   }
 
