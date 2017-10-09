@@ -1,4 +1,5 @@
 import React from 'react';
+import Draggable from 'react-draggable';
 
 import '../../scss/note.scss';
 
@@ -8,22 +9,25 @@ export default class Note extends React.Component {
 
     this.state = {
       //responsible for normal & edit mode in note
-      editing: false
+      editing: false,
+      bc: ['green', 'red', 'white'],
+      colorIndex : 0
     }
   }
 
   //styling and displaying components before rendering
   componentWillMount() {
     this.style = {
-      right: this.randomDisplay(0, window.innerWidth - 300, 'px'),
-      top: this.randomDisplay(0, window.innerHeight - 300, 'px')
+      right: this.randomDisplay(window.innerWidth - 300, 'px'),
+      top: this.randomDisplay(window.innerHeight - 300, 'px')
     }
   }
 
-  randomDisplay(x, window, px) {
-    //note distance from the edges
-    return (x + Math.ceil(Math.random() * (window - x)) + px)
+  randomDisplay(window, px) {
+    //note's distance from the edges
+    return (Math.ceil(Math.random() * window) + px)
   }
+
 
   editText() {
     this.setState({editing: true});
@@ -37,6 +41,16 @@ export default class Note extends React.Component {
 
   remove() {
     this.props.remove(this.props.index)
+  }
+
+  selectText() {
+    this.select(this.refs.refTextVal.value);
+  }
+
+  color() {
+    let color = this.state.bc;
+    console.log(color[this.state.colorIndex]);
+    this.state.colorIndex = (this.state.colorIndex + 1) % (color.length);
 
   }
 
@@ -45,6 +59,7 @@ export default class Note extends React.Component {
     return (
       <div className='note' style = {this.style}>
         <textarea
+          autoFocus
           ref = 'refTextVal'
           defaultValue = {this.props.children}>
         </textarea>
@@ -58,9 +73,14 @@ export default class Note extends React.Component {
 
   renderNote() {
     return (
-      <div className='note' style = {this.style}>
+      <div className='note'
+        style = {{backgroundColor: 'this.color()'}}
+        onClick = {() => this.color()}>
         <div>{this.props.children}</div>
-          <button onClick = {() => this.editText()}> EDIT </button>
+          <button onClick = {() => {
+              this.editText();
+              this.selectText.bind(this);
+            }}> EDIT </button>
           <button onClick = {() => this.remove()}> DELETE </button>
       </div>
     );
@@ -69,8 +89,10 @@ export default class Note extends React.Component {
 
 
   render() {
-    return (this.state.editing)
-    ? this.renderTextForm()
-    : this.renderNote()
+    return (
+      <Draggable>
+        {(this.state.editing) ? this.renderTextForm() : this.renderNote()}
+      </Draggable>
+    )
   }
 }

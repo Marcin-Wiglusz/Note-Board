@@ -16,6 +16,7 @@ export default class Board extends React.Component {
   //receiving error without {}
   addNote({note}) {
     let noteArr = this.state.notes;
+    console.log(noteArr);
     noteArr.push(note);
     this.setState({notes: noteArr});
   }
