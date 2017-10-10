@@ -8,7 +8,7 @@ export default class Board extends React.Component {
     super();
 
       this.state = {
-        notes: ['1Some meeting', '2Shoping list', '3Do some stuff']
+        notes: ['1Some meeting', '2Shoping list', '3Do some stuff','1Some meeting', '2Shoping list', '3Do some stuff']
       }
   }
 
@@ -44,15 +44,20 @@ export default class Board extends React.Component {
             > {text} </Note>
   }
 
+  clearAll() {
+    this.setState({notes: []})
+  }
+
 
   render() {
 
     return (
       <div>
         <button onClick = {this.addNote.bind(this)}> + Add Note </button>
+        <button onClick = {this.clearAll.bind(this)}> Clear Board </button>
 
         <div className='board'>
-          {/*maps through state creating 3 notes from it */}
+          {/*maps through state creating 'i' notes from it */}
           {this.state.notes.map(this.createArrNotes.bind(this))}
         </div>
       </div>

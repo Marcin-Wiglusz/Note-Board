@@ -8,10 +8,10 @@ export default class Note extends React.Component {
     super();
 
     this.state = {
-      //responsible for normal & edit mode in note
       editing: false,
-      bc: ['green', 'red', 'white'],
-      colorIndex : 0
+      statusColors: ['green', 'red', 'blue'],
+      colorIndex : 0,
+      backgroundColor: ''
     }
   }
 
@@ -43,24 +43,28 @@ export default class Note extends React.Component {
     this.props.remove(this.props.index)
   }
 
-  selectText() {
-    this.select(this.refs.refTextVal.value);
-  }
+  // selectText() {
+  //   this.select(this.refs.refTextVal.value);
+  // }
 
-  color() {
-    let color = this.state.bc;
-    console.log(color[this.state.colorIndex]);
-    this.state.colorIndex = (this.state.colorIndex + 1) % (color.length);
+  noteStatus() {
+    let color = this.state.statusColors;
+    let colorIndex = this.state.colorIndex;
+    this.setState({backgroundColor: color[colorIndex]});
+    //incrementing to 2 and going back to 0
+    this.state.colorIndex = (colorIndex + 1) % (color.length);
 
+    this.noteColor = {
+      backgroundColor: color[colorIndex]
+    }
   }
 
 
   renderTextForm() {
     return (
-      <div className='note' style = {this.style}>
-        <textarea
-          autoFocus
-          ref = 'refTextVal'
+      <div className='note'
+        style = {Object.assign({}, this.style, this.noteColor)}>
+        <textarea autoFocus ref = 'refTextVal'
           defaultValue = {this.props.children}>
         </textarea>
         {/* no need for bind(this) when using fat arrow */}
@@ -73,19 +77,18 @@ export default class Note extends React.Component {
 
   renderNote() {
     return (
+      // Object.assign({}) allows to add multiple styles from different func
       <div className='note'
-        style = {{backgroundColor: 'this.color()'}}
-        onClick = {() => this.color()}>
+        style = {Object.assign({}, this.style, this.noteColor)}>
         <div>{this.props.children}</div>
-          <button onClick = {() => {
-              this.editText();
-              this.selectText.bind(this);
-            }}> EDIT </button>
+        <div className='btns'>
+          <button onClick = {() => this.editText()}> EDIT </button>
           <button onClick = {() => this.remove()}> DELETE </button>
+          <button onClick = {() => this.noteStatus()}> STATUS </button>
+        </div>
       </div>
     );
   }
-
 
 
   render() {
