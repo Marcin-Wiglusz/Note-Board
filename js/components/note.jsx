@@ -80,7 +80,7 @@ export default class Note extends React.Component {
       // Object.assign({}) allows to add multiple styles from different func
       <div className='note'
         style = {Object.assign({}, this.style, this.noteColor)}>
-        <div>{this.props.children}</div>
+        <div className='text'>{this.props.children}</div>
         <div className='btns'>
           <button onClick = {() => this.editText()}> EDIT </button>
           <button onClick = {() => this.remove()}> DELETE </button>
