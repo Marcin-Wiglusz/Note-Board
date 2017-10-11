@@ -53,10 +53,21 @@ export default class Board extends React.Component {
 
     return (
       <div>
-        <button onClick = {this.addNote.bind(this)}> + Add Note </button>
-        <button onClick = {this.clearAll.bind(this)}> Clear Board </button>
-
         <div className='board'>
+          <nav className='legend'>
+            <button
+              onClick = {this.addNote.bind(this)}> Add Note
+            </button>
+            <button
+              onClick = {this.clearAll.bind(this)}>Clear Board
+            </button>
+            <ul>Click Status to toggle between:
+              <li>To Do <span></span></li>
+              <li>Doing</li>
+              <li>Done</li>
+            </ul>
+            <p>Dragg single no</p>
+          </nav>
           {/*maps through state creating 'i' notes from it */}
           {this.state.notes.map(this.createArrNotes.bind(this))}
         </div>

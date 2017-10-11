@@ -5,10 +5,36 @@
 }
 
 body{
-  background-color: grey;
+  background-color: #AA7939;
+
+}
+
+.board{
 
 
-  div{
+  .legend{
     border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+
+    ul{
+      border: 1px solid red;
+
+      li{
+        display: inline;
+        border: 1px solid red;
+      }
+    }
+
+    p{
+      border: 1px solid red;
+    }
+
+    span{
+      display: inline-block;
+      width: 50px;
+      height: 12px;
+      background-color: #fff;
+    }
   }
 }

@@ -9,7 +9,7 @@ export default class Note extends React.Component {
 
     this.state = {
       editing: false,
-      statusColors: ['green', 'red', 'blue'],
+      statusColors: ['#E7FB00', '#74E100', '#ffdaaa'],
       colorIndex : 0,
       backgroundColor: ''
     }
@@ -80,11 +80,15 @@ export default class Note extends React.Component {
       // Object.assign({}) allows to add multiple styles from different func
       <div className='note'
         style = {Object.assign({}, this.style, this.noteColor)}>
-        <div className='text'>{this.props.children}</div>
+        <div className='scroll-wrapper'>
+          <div className='text'>{this.props.children}</div>
+        </div>
         <div className='btns'>
           <button onClick = {() => this.editText()}> EDIT </button>
-          <button onClick = {() => this.remove()}> DELETE </button>
-          <button onClick = {() => this.noteStatus()}> STATUS </button>
+          <button onClick = {() => this.noteStatus()}> STATUS
+          </button>
+          <button onClick = {() => this.remove()}> DELETE
+          </button>
         </div>
       </div>
     );
