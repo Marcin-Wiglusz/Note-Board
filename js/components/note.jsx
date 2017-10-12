@@ -1,15 +1,17 @@
 import React from 'react';
+import Radium from 'radium';
 import Draggable from 'react-draggable';
 
 import '../../scss/note.scss';
 
+@Radium
 export default class Note extends React.Component {
   constructor() {
     super();
 
     this.state = {
       editing: false,
-      statusColors: ['#E7FB00', '#74E100', '#ffdaaa'],
+      statusColors: ['#E7FB00', '#74E100', '#FF4C99', '#48BEDD'],
       colorIndex : 0,
       backgroundColor: ''
     }
@@ -17,9 +19,12 @@ export default class Note extends React.Component {
 
   //styling and displaying components before rendering
   componentWillMount() {
+
+
     this.style = {
       right: this.randomDisplay(window.innerWidth - 300, 'px'),
       top: this.randomDisplay(window.innerHeight - 300, 'px')
+
     }
   }
 
@@ -55,7 +60,8 @@ export default class Note extends React.Component {
     this.state.colorIndex = (colorIndex + 1) % (color.length);
 
     this.noteColor = {
-      backgroundColor: color[colorIndex]
+      backgroundColor: color[colorIndex],
+
     }
   }
 
@@ -80,9 +86,7 @@ export default class Note extends React.Component {
       // Object.assign({}) allows to add multiple styles from different func
       <div className='note'
         style = {Object.assign({}, this.style, this.noteColor)}>
-        <div className='scroll-wrapper'>
-          <div className='text'>{this.props.children}</div>
-        </div>
+        <div className='text'><p>{this.props.children}</p></div>
         <div className='btns'>
           <button onClick = {() => this.editText()}> EDIT </button>
           <button onClick = {() => this.noteStatus()}> STATUS

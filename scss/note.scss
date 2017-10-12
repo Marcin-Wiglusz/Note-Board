@@ -1,35 +1,52 @@
 @import "normalize";
 @import url('https://fonts.googleapis.com/css?family=Gochi+Hand');
 
+$colors: #E7FB00, #74E100, #48BEDD, #FF4C99;
+$repeat: 7;
+
+@for $i from 0 through $repeat {
+    .note:nth-child(#{length($colors)}n+#{$i}) {
+        background: nth($colors, random(length($colors)));
+    }
+}
+
+
 .note{
   font-family: 'Gochi Hand', cursive;
   font-size: 25px;
-  background-color: #FFDAAA;
+  // background-color: #48BEDD;
   -webkit-box-shadow: 5px 5px 10px -1px rgba(0,0,0,0.75);
   -moz-box-shadow: 5px 5px 10px -1px rgba(0,0,0,0.75);
   box-shadow: 5px 5px 10px -1px rgba(0,0,0,0.75);
   width: 300px;
   height: 300px;
   position: absolute;
-  word-wrap: break-word;
   z-index: -1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  .scroll-wrapper{
-    width: 100%;
-    overflow: hidden;
 
-    .text{
+  .text{
+    width: 100%;
+    height: 86%;
+    padding: 20px 10px;
+    display: flex;
+
+
+    p{
+      word-wrap: break-word;
+      margin: auto;
       width: 100%;
-      padding: 20px 10px;
+      max-height: 100%;
+      overflow: hidden;
       text-align: center;
     }
   }
 
   .btns{
     // width: 100%;
+    height: 14%;
     padding: 5px;
     display: flex;
     justify-content: flex-end;

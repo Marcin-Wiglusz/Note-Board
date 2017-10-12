@@ -66,7 +66,7 @@ export default class Board extends React.Component {
               <li>Doing</li>
               <li>Done</li>
             </ul>
-            <p>Dragg single no</p>
+            <p>Dragg notes to organize them on your board</p>
           </nav>
           {/*maps through state creating 'i' notes from it */}
           {this.state.notes.map(this.createArrNotes.bind(this))}
