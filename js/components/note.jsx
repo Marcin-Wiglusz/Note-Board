@@ -1,11 +1,9 @@
 import React from 'react';
-import Radium from 'radium';
 import Draggable from 'react-draggable';
 
 import '../../scss/note.scss';
 
-@Radium
-export default class Note extends React.Component {
+class Note extends React.Component {
   constructor() {
     super();
 
@@ -13,18 +11,19 @@ export default class Note extends React.Component {
       editing: false,
       statusColors: ['#E7FB00', '#74E100', '#FF4C99', '#48BEDD'],
       colorIndex : 0,
-      backgroundColor: ''
+      backgroundColor: '',
     }
   }
 
   //styling and displaying components before rendering
   componentWillMount() {
-
+    let colorArr = this.state.statusColors;
+    let random = colorArr[Math.floor(Math.random() * colorArr.length)];
 
     this.style = {
       right: this.randomDisplay(window.innerWidth - 300, 'px'),
-      top: this.randomDisplay(window.innerHeight - 300, 'px')
-
+      top: this.randomDisplay(window.innerHeight - 300, 'px'),
+      backgroundColor: random
     }
   }
 
@@ -32,7 +31,6 @@ export default class Note extends React.Component {
     //note's distance from the edges
     return (Math.ceil(Math.random() * window) + px)
   }
-
 
   editText() {
     this.setState({editing: true});
@@ -60,26 +58,9 @@ export default class Note extends React.Component {
     this.state.colorIndex = (colorIndex + 1) % (color.length);
 
     this.noteColor = {
-      backgroundColor: color[colorIndex],
-
+      backgroundColor: color[colorIndex]
     }
   }
-
-
-  renderTextForm() {
-    return (
-      <div className='note'
-        style = {Object.assign({}, this.style, this.noteColor)}>
-        <textarea autoFocus ref = 'refTextVal'
-          defaultValue = {this.props.children}>
-        </textarea>
-        {/* no need for bind(this) when using fat arrow */}
-        <button onClick = {() => this.saveText()} >SAVE</button>
-      </div>
-    );
-  }
-
-
 
   renderNote() {
     return (
@@ -99,6 +80,20 @@ export default class Note extends React.Component {
   }
 
 
+  renderTextForm() {
+    return (
+      <div className='note'
+        style = {Object.assign({}, this.style, this.noteColor)}>
+        <textarea autoFocus ref = 'refTextVal'
+          defaultValue = {this.props.children}>
+        </textarea>
+        {/* no need for bind(this) when using fat arrow */}
+        <button onClick = {() => this.saveText()} >SAVE</button>
+      </div>
+    );
+  }
+
+
   render() {
     return (
       <Draggable>
@@ -107,3 +102,4 @@ export default class Note extends React.Component {
     )
   }
 }
+export default Note;
