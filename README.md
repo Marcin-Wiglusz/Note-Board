@@ -1,4 +1,4 @@
-# Note-Board (https://marcin-wiglusz.github.io/Note-Board/)
+# [Note-Board](https://marcin-wiglusz.github.io/Note-Board/)
 
 A desktop note board app built in ReactJS.
 
