@@ -8,4 +8,4 @@ Features:
 * Sass,
 * Webpack
 
-## [tennis-game](https://marcin-wiglusz.github.io/Note-Board/)
+## [Note-Board](https://marcin-wiglusz.github.io/Note-Board/)
