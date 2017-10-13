@@ -9,42 +9,59 @@ html{
 }
 
 body{
-  // background-color: #AA7939;
+  // received an error when path was given
   background-image: url('http://localhost:3001/board.jpg');
   background-size: 100% 100%;
-
-  div{
-    // border: 1px red solid;
-  }
 }
 
 .board{
 
-
   .legend{
-    border: 1px solid red;
     display: flex;
     flex-direction: row;
-    z-index: 2;
+    align-items: center;
+    text-transform: uppercase;
+    z-index: 1;
+    background-color: #000;
+    color: #fff;
+    height: 50px;
+
+    button{
+      height: 25px;
+      background-color: #F2F1F0;
+      border: 1px solid #A9A9A9;
+      margin: 0 5px;
+      border-radius: 7px;
+      text-transform: uppercase;
+    }
 
     ul{
-      border: 1px solid red;
+      padding: 0 20px;
 
       li{
         display: inline;
-        border: 1px solid red;
+        padding: 0 5px;
       }
     }
 
-    p{
-      border: 1px solid red;
-    }
-
-    span{
+    #yellow, #green, #pink, #blue{
       display: inline-block;
       width: 50px;
       height: 12px;
-      background-color: #fff;
+      background-color: #E7FB00;
+      margin-left: 5px;
+    }
+
+    #green{
+      background-color: #74E100;
+    }
+
+    #pink{
+      background-color: #FF4C99;
+    }
+
+    #blue{
+      background-color: #48BEDD;
     }
   }
 }

@@ -8,7 +8,7 @@ export default class Board extends React.Component {
     super();
 
       this.state = {
-        notes: ['1Some meeting', '2Shoping list', '3Do some stuff','1Some meeting', '2Shoping list', '3Do some stuff']
+        notes: ['Thursday 10 am meeting', 'Book 3 tickets on Knicks game', 'Speeding ticket till Nov 2nd','Return Graves & Marquez to Lib - Nov 22nd', 'New Kadavar coming out on Dec 5th', 'Car insurance expires on Dec 28th']
       }
   }
 
@@ -16,7 +16,6 @@ export default class Board extends React.Component {
   //receiving error without {}
   addNote({note}) {
     let noteArr = this.state.notes;
-    console.log(noteArr);
     noteArr.push(note);
     this.setState({notes: noteArr});
   }
@@ -41,7 +40,7 @@ export default class Board extends React.Component {
             key = {i}
             remove = {this.removeNote.bind(this)}
             update = {this.updateText.bind(this)}
-            > {text} </Note>
+            >{text}</Note>
   }
 
   clearAll() {
@@ -62,9 +61,10 @@ export default class Board extends React.Component {
               onClick = {this.clearAll.bind(this)}>Clear Board
             </button>
             <ul>Click Status to toggle between:
-              <li>To Do <span></span></li>
-              <li>Doing</li>
-              <li>Done</li>
+              <li>New Note<span id='blue'></span></li>
+              <li>To Do<span id='yellow'></span></li>
+              <li>Doing<span id='green'></span></li>
+              <li>Done<span id='pink'></span></li>
             </ul>
             <p>Dragg notes to organize them on your board</p>
           </nav>

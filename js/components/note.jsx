@@ -3,7 +3,7 @@ import Draggable from 'react-draggable';
 
 import '../../scss/note.scss';
 
-class Note extends React.Component {
+export default class Note extends React.Component {
   constructor() {
     super();
 
@@ -46,15 +46,11 @@ class Note extends React.Component {
     this.props.remove(this.props.index)
   }
 
-  // selectText() {
-  //   this.select(this.refs.refTextVal.value);
-  // }
-
   noteStatus() {
     let color = this.state.statusColors;
     let colorIndex = this.state.colorIndex;
     this.setState({backgroundColor: color[colorIndex]});
-    //incrementing to 2 and going back to 0
+    //incrementing to 3 and going back to 0
     this.state.colorIndex = (colorIndex + 1) % (color.length);
 
     this.noteColor = {
@@ -87,8 +83,10 @@ class Note extends React.Component {
         <textarea autoFocus ref = 'refTextVal'
           defaultValue = {this.props.children}>
         </textarea>
-        {/* no need for bind(this) when using fat arrow */}
-        <button onClick = {() => this.saveText()} >SAVE</button>
+        <div className='btns'>
+          {/* no need for bind(this) when using fat arrow */}
+          <button onClick = {() => this.saveText()} >SAVE</button>
+        </div>
       </div>
     );
   }
@@ -102,4 +100,3 @@ class Note extends React.Component {
     )
   }
 }
-export default Note;
