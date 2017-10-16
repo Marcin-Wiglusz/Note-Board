@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import '../scss/app.scss';
+import './app.scss';
 
-import Note from './components/note.jsx';
-import Board from './components/board.jsx';
+import Note from './note.jsx';
+import Board from './board.jsx';
 
-class App extends Component {
+class App extends React.Component {
 
 
   render() {

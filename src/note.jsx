@@ -1,7 +1,7 @@
 import React from 'react';
 import Draggable from 'react-draggable';
 
-import '../../scss/note.scss';
+import './note.scss';
 
 export default class Note extends React.Component {
   constructor() {

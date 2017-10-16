@@ -7,7 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "wp": "webpack",
     "wp-hot": "./node_modules/.bin/webpack-dev-server --hot",
-    "wp-v": "./node_modules/.bin/webpack -v"
+    "wp-v": "./node_modules/.bin/webpack -v",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build"
   },
   "repository": {
     "type": "git",
@@ -18,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/Marcin-Wiglusz/Note-Board/issues"
   },
-  "homepage": "https://github.com/Marcin-Wiglusz/Note-Board#readme",
+  "homepage": "https://Marcin-Wiglusz.github.io/Note-Board",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -27,6 +31,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^0.28.7",
     "node-sass": "^4.5.3",
+    "react-scripts": "^1.0.14",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "webpack": "^3.6.0",

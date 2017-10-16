@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../scss/board.scss';
+import './board.scss';
 import Note from './note.jsx';
 
 export default class Board extends React.Component {
