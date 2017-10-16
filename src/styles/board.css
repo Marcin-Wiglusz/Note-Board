@@ -1,0 +1,58 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+* {
+  box-sizing: border-box; }
+
+html {
+  height: 100%; }
+
+body {
+  background-image: url("../img/board.jpg");
+  background-size: 100% 100%; }
+
+.board .legend {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-transform: uppercase;
+  z-index: 1;
+  background-color: #000;
+  color: #fff;
+  height: 50px; }
+  .board .legend button {
+    min-height: 25px;
+    background-color: #F2F1F0;
+    border: 1px solid #A9A9A9;
+    margin: 0 5px;
+    border-radius: 7px;
+    text-transform: uppercase; }
+  .board .legend ul {
+    padding: 0 20px; }
+    .board .legend ul li {
+      display: inline;
+      padding: 0 5px; }
+  .board .legend #yellow, .board .legend #green, .board .legend #pink, .board .legend #blue {
+    display: inline-block;
+    width: 50px;
+    height: 12px;
+    background-color: #E7FB00;
+    margin-left: 5px; }
+  .board .legend #green {
+    background-color: #74E100; }
+  .board .legend #pink {
+    background-color: #FF4C99; }
+  .board .legend #blue {
+    background-color: #48BEDD; }

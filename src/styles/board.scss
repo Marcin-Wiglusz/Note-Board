@@ -1,4 +1,4 @@
-@import "normalize";
+@import "./normalize.scss";
 
 *{
   box-sizing: border-box;
@@ -10,7 +10,7 @@ html{
 
 body{
   // received an error when path was given
-  background-image: url('http://localhost:3001/board.jpg');
+  background-image:url('../img/board.jpg');
   background-size: 100% 100%;
 }
 

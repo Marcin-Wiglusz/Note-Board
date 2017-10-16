@@ -1,7 +1,7 @@
 import React from 'react';
 import Draggable from 'react-draggable';
 
-import './note.scss';
+import '../styles/note.css';
 
 export default class Note extends React.Component {
   constructor() {
@@ -51,7 +51,7 @@ export default class Note extends React.Component {
     let colorIndex = this.state.colorIndex;
     this.setState({backgroundColor: color[colorIndex]});
     //incrementing to 3 and going back to 0
-    this.state.colorIndex = (colorIndex + 1) % (color.length);
+    this.setState({colorIndex: (colorIndex + 1) % (color.length)}) ;
 
     this.noteColor = {
       backgroundColor: color[colorIndex]

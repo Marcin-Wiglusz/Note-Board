@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './app.scss';
+// import './app.scss';
 
-import Note from './note.jsx';
-import Board from './board.jsx';
+import Note from './components/note.jsx';
+import Board from './components/board.jsx';
 
 class App extends React.Component {
 
